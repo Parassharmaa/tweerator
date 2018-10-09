@@ -1,8 +1,7 @@
 # Tweerator
 
-Utility Script to fetch and tweets with state management
+Utility Script to fetch Tweets with state management
 
----
 
 ## Setup and Run
 
