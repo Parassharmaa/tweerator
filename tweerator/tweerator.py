@@ -89,3 +89,18 @@ class Tweerator(object):
             print('-'*5)
             print("Tweets Fetched: {}".format(tc))
             print("Total Time: {} sec".format(round(time.time() - t1), 2))
+
+
+
+    def download_tweets(self, ids_list):
+        tweets_list = []
+
+        for i, t_id in enumerate(ids_list):
+            try:
+                tweet = self.api.get_status(t_id)
+                print(i)
+                tweets_list.append(tweet)
+            except:
+                pass
+
+        json.dump(tweets_list, open("tweets.json", 'w'))
