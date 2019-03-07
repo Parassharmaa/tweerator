@@ -1,8 +1,8 @@
-import tweepy
 import csv
 import sys
 import time
 import os
+import tweepy
 import json
 
 
@@ -65,7 +65,6 @@ class Tweerator(object):
 
     def fetch(self, keyword, count=100):
         file_name = "{}.csv".format(keyword)
-        count = count
         since_id = self.load_state(keyword)
         csv_file = self.init_csv(keyword)
         tc = 0
@@ -99,7 +98,8 @@ class Tweerator(object):
             try:
                 tweet = self.api.get_status(t_id)
                 print(i)
-                tweets_list.append(tweet)
+                print(tweet.place)
+                tweets_list.append(tweet._json)
             except:
                 pass
 
