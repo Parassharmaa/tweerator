@@ -60,7 +60,7 @@ class Tweerator(object):
         file_exist = os.path.isfile(data_path)
         csv_file = csv.writer(open(data_path, 'a'))
         if not file_exist:
-            csv_file.writerow(['created_at', 'username', 'tweet', 'source'])
+            csv_file.writerow(['created_at', 'username', 'tweet', 'source', 'geo'])
         return csv_file
 
     def fetch(self, keyword, count=100):
@@ -78,7 +78,7 @@ class Tweerator(object):
                     tc += 1
                     tweet_id = tweet.id
                     csv_file.writerow(
-                        [tweet.created_at, tweet.user.screen_name, tweet.text.strip(), tweet.source])
+                        [tweet.created_at, tweet.user.screen_name, tweet.text.strip(), tweet.source, tweet.geo])
                     sys.stdout.write('''Tweets fetched: %d  \t Elapsed time: %d sec \t Efficiency: %d%%  \r''' % (
                         tc, round(time.time() - t1), round(5 * (ttc/(time.time()-t1)))))
                     sys.stdout.flush()
