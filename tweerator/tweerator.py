@@ -57,7 +57,7 @@ class Tweerator(object):
         if not os.path.isdir(self.data_path):
             os.mkdir(self.data_path)
 
-        data_path = "{self.data_path}/{}.csv".format(file_name)
+        data_path = "{}/{}.csv".format(self.data_path, file_name)
         file_exist = os.path.isfile(data_path)
         csv_file = csv.writer(open(data_path, 'a'))
         if not file_exist:
