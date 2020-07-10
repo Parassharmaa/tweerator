@@ -23,7 +23,7 @@ class Tweerator(object):
             self.consumer_key, self.consumer_secret)
         self.auth.set_access_token(self.access_token, self.access_token_secret)
         self.api = tweepy.API(self.auth, wait_on_rate_limit=True)
-        self.data_path = root_path
+        self.root_path = root_path
 
     def load_state(self, keyword):
         id = ''
@@ -54,10 +54,10 @@ class Tweerator(object):
         print("\n\nState Saved..")
 
     def init_csv(self, file_name):
-        if not os.path.isdir(self.data_path):
-            os.mkdir(self.data_path)
+        if not os.path.isdir(self.root_path):
+            os.mkdir(self.root_path)
 
-        data_path = "{}/{}.csv".format(self.data_path, file_name)
+        data_path = "{}/{}.csv".format(self.root_path, file_name)
         file_exist = os.path.isfile(data_path)
         csv_file = csv.writer(open(data_path, 'a'))
         if not file_exist:
